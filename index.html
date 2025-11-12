@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Tools</title>
+    </head>
+    <body>
+        <h1>Image Tools</h1>
+        <canvas id="canvas"></canvas>
+        <br>
+        <input type="file" accept="image/*" id="upload">
+        <br>
+        <input type="number" id="canvasWidth" min="1" value="100">
+        x
+        <input type="number" id="canvasHeight" min="1" value="100">
+        <button id="setCanvasSize">Set Canvas Size</button>
+        <br>
+        <button id="undo">Undo</button>
+        <br>
+        <button id="invert">Invert</button>
+        <br>
+        <button id="grayscale">Grayscale</button>
+        <br>
+        <button id="openEyeDropper">Open Eyedropper</button>
+        <span id="eyeDropperColor"></span>
+        <br>
+        <button id="removeReds">Remove Reds</button>
+        <button id="removeGreens">Remove Greens</button>
+        <button id="removeBlues">Remove Blues</button>
+        <br>
+        <input type="number" id="redAdd" value="0" min="-255" max="255">
+        <input type="number" id="greenAdd" value="0" min="-255" max="255">
+        <input type="number" id="blueAdd" value="0" min="-255" max="255">
+        <button id="addRgb">Add RGB</button>
+        <br>
+        <input type="number" id="redMultiplier" value="1" step=".01">
+        <input type="number" id="greenMultiplier" value="1" step=".01">
+        <input type="number" id="blueMultiplier" value="1" step=".01">
+        <button id="multiplyRgb">Multiply RGB</button>
+        <br>
+        <input type="number" id="hueRotate" value="1">
+        <button id="rotate">Hue Rotate</button>
+        <br>
+        <input type="number" id="darkenBrighten" value="0.5" step=".01">
+        <button id="brighten">Brighten</button>
+        <button id="darken">Darken</button>
+        <br>
+        <button id="flipX">Flip Horizontal</button>
+        <button id="flipY">Flip Vertical</button>
+        <br>
+        <input id="noiseSeed" type="number" step=".01" min="0" max="1" value="1">
+        <button id="perlinNoise">Generate Perlin Noise</button>
+        <br>
+        <input type="color" id="solidColor">
+        <button id="solid">Generate Solid Image</button>
+        <button id="replace">Replace All Colors</button>
+        <br>
+        <input type="color" id="gradientColor1">
+        <input type="color" id="gradientColor2">
+        <button id="gradient">Generate Gradient</button>
+        <br>
+        <select id="typeSelect">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="webp">WEBP</option>
+        </select>
+        <button id="download">Download</button>
+        <br>
+        <img id="img">
+        <script src="noisejs.js"></script>
+        <script src="color-conversion-algorithms.js"></script>
+        <script src="main.js"></script>
+    </body>
+    <style>
+        html {
+            background-color: black;
+            color: white;
+        }
+        button, input[type="number"], select, input[type="file"]::file-selector-button {
+            font-family: monospace;
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            margin-top: 4px;
+        }
+        * {
+            font-family: monospace;
+        }
+        #removeReds, #redMultiplier, #redAdd {
+            border: 1px solid #FF0000;
+            color: #FF0000;
+        }
+        #removeGreens, #greenMultiplier, #greenAdd {
+            border: 1px solid #00FF00;
+            color: #00FF00;
+        }
+        #removeBlues, #blueMultiplier, #blueAdd {
+            border: 1px solid #0000FF;
+            color: #0000FF;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        ::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+        ::-webkit-color-swatch {    
+            border: none;
+        }
+        input[type="color"] {
+            transform: translateY(25%);
+            display: inline;
+            webkit-appearance: none;
+            border: none;
+            max-height: 20px;
+            max-width: 20px;
+        }
+        #canvas {
+            border: 1px solid white;
+            margin-top: -12px;
+        }
+    </style>
+</html>
